@@ -98,7 +98,7 @@ public class ArtifactServiceTest {
 
         // when
         Throwable thrown = catchThrowable(() -> {
-            Artifact returnedArtifact = artifactService.findById("125080601744904192");
+            this.artifactService.findById("125080601744904192");
 
         });
 
