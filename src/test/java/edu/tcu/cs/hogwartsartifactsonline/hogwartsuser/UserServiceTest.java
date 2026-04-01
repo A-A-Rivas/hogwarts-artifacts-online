@@ -20,14 +20,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
+@Transactional
 public class UserServiceTest {
 
     @Mock
     UserRepository userRepository;
+
+    @Mock
+    PasswordEncoder passwordEncoder;
 
     @InjectMocks
     UserService userService;
@@ -136,6 +142,7 @@ public class UserServiceTest {
         newUser.setEnabled(true);
         newUser.setRoles("user");
 
+        given(this.passwordEncoder.encode(newUser.getPassword())).willReturn("Encoded Password");
         given(this.userRepository.save(newUser)).willReturn(newUser);
 
         // when
