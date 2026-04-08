@@ -1,12 +1,7 @@
 spring:
-    datasource:
-        url: jdbc:h2:mem:hogwarts
-        username: sa
-        password: 
-        driver-class-name: org.h2.Driver
-    jpa:
-        show-sql: true
-    
+    profiles:
+        active: dev # by default, the active file is "dev". during production, it is replaced to "prod" due to Azure's environment variables
+
 api:
     endpoint:
         base-url: /api/v1

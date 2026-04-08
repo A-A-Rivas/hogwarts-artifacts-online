@@ -21,12 +21,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 @Transactional
+@ActiveProfiles(value = "dev")
 public class UserServiceTest {
 
     @Mock
